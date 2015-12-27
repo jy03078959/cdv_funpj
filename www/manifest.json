@@ -1,0 +1,12 @@
+{
+  "files": {
+
+  },
+  "load": [
+    "all.css",
+    "cordova-app-loader-complete.js",
+    "app.js",
+    "autoupdate.js"
+  ],
+  "version": "0"
+}

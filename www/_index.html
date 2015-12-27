@@ -1,0 +1,21 @@
+<div id="app" class="row-fluid">
+    <div id="pageWarp" class="page">
+        <c-header></c-header>
+        <div class="content">
+            <component :is="currentView" keep-alive
+                       transition="fade"
+                       transition-mode="out-in"
+                       params="{{pageParams}}">
+            </component>
+        </div>
+        <c-mainmenu></c-mainmenu>
+    </div>
+    <!--登陆模块-->
+    <div id="diglog">
+        <component :is="currentDialog" params="{{dialogParams}}">
+        </component>
+    </div>
+    <c-load></c-load>
+    <c-updata></c-updata>
+    <c-alert></c-alert>
+</div>
