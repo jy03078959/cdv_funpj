@@ -1,0 +1,106 @@
+<div id="hzgl" class="hzgl page">
+    <div class="search-panel">
+        <h1>流水搜索</h1>
+
+        <div class="search-warp">
+            <span class="form-group">
+                <label>
+                    确认人:
+                </label>
+               <input type="text" lazy v-model="searchInfo.confirmer"
+                      class="form-control">
+            </span>
+            <span class="form-group">
+                <label>
+                    流水号:
+                </label>
+               <input type="text" lazy v-model="searchInfo.transactionId"
+                      class="form-control">
+            </span>
+
+            <span class="form-group">
+                <label>
+                    司机支付时间:
+                </label>
+               <input Jid="startTime" type="text" lazy v-model="searchInfo.paidStartTime"
+                      class="form-control ">
+                 至
+               <input Jid="endTime" type="text" lazy v-model="searchInfo.paidEndTime"
+                      class="form-control">
+            </span>
+
+            <div class="btn yellow search" v-touch:tap="search">
+                查询
+            </div>
+            <div class="btn blue search" v-touch:tap="getMoney">
+                申请提现
+            </div>
+        </div>
+    </div>
+    <div class="nav-panel clearfix">
+
+    </div>
+    <div class="list-panel">
+        <div class="table">
+            <div class="thead">
+                <ttd >
+                    <input type="checkbox"  v-touch:tap="toggleSelectAll($event)">
+                </ttd>
+                <ttd >序号</ttd>
+                <ttd >流水号</ttd>
+                <ttd >确认人</ttd>
+                <ttd >确认时间</ttd>
+                <ttd >金额</ttd>
+                <ttd >折扣</ttd>
+                <ttd >应收金额</ttd>
+                <ttd >提现时间</ttd>
+                <ttd >支付时间</ttd>
+            </div>
+            <div class="tbody">
+                <div v-repeat="item in ggInfo.lists" v-touch:tap="info($event,item)">
+                    <ttd>
+                        <input type="checkbox"  value="{{item.id}}" disabled="{{item.applyStatus!=0}}">
+                    </ttd>
+                    <ttd>{{$index}}</ttd>
+                    <ttd>{{item.id}}</ttd>
+                    <ttd>{{item.confirmer}}</ttd>
+                    <ttd>{{item.confirmTime | datetime}}</ttd>
+                    <ttd>{{item.totalAmount | moneyFormat}}元</ttd>
+                    <ttd>{{item.discount}}</ttd>
+                    <ttd>{{item.paidAmount |moneyFormat}}元</ttd>
+                    <ttd>{{item.applyTime | datetime}}</ttd>
+                    <ttd>{{item.paidTime | datetime}}</ttd>
+
+                </div>
+                <div>
+                    <ttd ></ttd>
+                    <ttd ></ttd>
+                    <ttd ></ttd>
+                    <ttd ></ttd>
+                    <ttd ></ttd>
+                    <ttd >合计:{{ggInfo.allTotalAmount|moneyFormat}}元</ttd>
+                    <ttd ></ttd>
+                    <ttd >合计:{{ggInfo.allPaidAmount|moneyFormat}}元</ttd>
+                    <ttd ></ttd>
+                    <ttd ></ttd>
+                </div>
+                <div>
+                    <ttd ></ttd>
+                    <ttd ></ttd>
+                    <ttd ></ttd>
+                    <ttd ></ttd>
+                    <ttd ></ttd>
+                    <ttd ></ttd>
+                    <ttd ></ttd>
+                    <ttd ></ttd>
+                    <ttd ></ttd>
+                    <ttd ></ttd>
+                </div>
+
+            </div>
+        </div>
+        <div class="dataPageWarp">
+            <c-datapager params="{{ggInfo.pagerInfo}}"></c-datapager>
+        </div>
+    </div>
+</div>

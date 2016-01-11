@@ -1,0 +1,12 @@
+<header id="header" class="bar bar-nav" :class="[show ? '': 'hide']">
+    <button class="button button-link button-nav pull-left" :class="[canBack ? 'show': 'hide']" v-touch:tap="backCall">
+        <i class="iconfont icon-left_arrow"></i>
+
+    </button>
+
+    <h1 class="title">{{title}}</h1>
+
+    <button class="button button-link button-nav pull-right" v-touch:tap="moreCall">
+        {{more.text}}
+    </button>
+</header>

@@ -1,0 +1,7 @@
+<nav id="mainMenu" class="bar bar-tab" :class="[show ? '' : 'hide']">
+    <span v-for="list in lists" v-touch:tap="change(list)" class="tab-item" :class="list.active?'active':''"
+       href="#/{{list.key}}">
+        <i class="iconfont icon-{{list.key}}"></i>
+        <span class="tab-label">{{list.name}}</span>
+    </span>
+</nav>

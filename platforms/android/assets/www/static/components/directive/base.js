@@ -1,0 +1,1 @@
+define("components/directive/base",function(e){var t=e("vue.js");t.directive("dateTimeSelect",{bind:function(){var e=this,t={lang:"zh",display:"bottom",dateFormat:"yy/mm/dd",startYear:(new Date).getFullYear()-2,endYear:(new Date).getFullYear(),controls:["date","time"]};$(e.el).mobiscroll().calendar(t)},update:function(){},unbind:function(){}})});

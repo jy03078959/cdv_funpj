@@ -1,0 +1,58 @@
+<div id="import" class="content">
+    <div class="pageContent">
+        <div class="buttons-tab">
+            <span class="tab-link button" v-touch:tap="tabKey='quick'" :class="[tabKey=='quick'?'active':'']">
+                快速导入
+            </span>
+            <span class="tab-link button" v-touch:tap="tabKey='pcimport'" :class="[tabKey=='pcimport'?'active':'']">
+                pc导入
+            </span>
+            <span class="tab-link button" v-touch:tap="tabKey='emailimport'" :class="[tabKey=='emailimport'?'active':'']">
+                邮件导入
+            </span>
+        </div>
+        <div class="tab_content" :class="[(tabKey=='pcimport'||tabKey=='emailimport')?'rbg':'']">
+            <div class="tabs">
+                <div  class="tab" :class="[tabKey=='quick'?'active':'']">
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">邮箱地址:</div>
+                                        <div class="item-input">
+                                            <input type="text" placeholder="我的票据常用邮箱">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">邮箱密码:</div>
+                                        <div class="item-input">
+                                            <input type="text" placeholder="输入邮箱密码">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="item">我们将为你开启票据清单只能收取</div>
+                    <div class="item">
+                        <input type="checkbox" id="check"> <label class="" for="check">同意 <span class="ps">《"范票"邮箱导入票据清单服务协议》</span></label>
+                    </div>
+                    <div class="btnWarp">
+                        <div class="btn blue">快速导入</div>
+                    </div>
+                </div>
+                <div  class="tab" :class="[tabKey=='pcimport'?'active':'']">
+                </div>
+                <div  class="tab" :class="[tabKey=='emailimport'?'active':'']">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,151 @@
+<div id="trade" class="content">
+    <div class="pageContent">
+        <div class="buttons-tab">
+            <span class="tab-link button" v-touch:tap="tabChange('autobill')" :class="[tabKey=='autobill'?'active':'']">
+                智能台账
+                <!--<span class="badge">2</span>-->
+            </span>
+            <span class="tab-link button" v-touch:tap="tabChange('salebill')" :class="[tabKey=='salebill'?'active':'']">
+                交易记录
+            </span>
+            <span class="tab-link button" v-touch:tap="tabChange('waitbill')" :class="[tabKey=='waitbill'?'active':'']">
+                待处理
+            </span>
+        </div>
+        <div class="tab_content">
+            <div class="tabs">
+                <div  class="tab" :class="[tabKey=='autobill'?'active':'']">
+
+
+                    <li v-for="list in lists.autobill.lists"  v-touch:tap="touch($event,list)" class="item-content item-link">
+                        <div class="leftWarp">
+                            <div class="imgWarp">
+                                <div class="btype">{{btype[list.bill_type]}}</div>
+                                <div class="rate">{{list.interest_rate|percentFormat}}</div>
+                                <div class="fdate"><i class="iconfont icon-clock"></i>  {{list.future_date|datetime 'YYYY/MM/DD'}}</div>
+                            </div>
+                        </div>
+                        <div class="rightWarp">
+                            <div class="descWarp">
+                                <div class="left">
+                                    <span class="sum">{{list.total_sum|moneyFormat}}万</span>/<span class="IDbnum">{{list.total_bill_num}}张</span>
+                                </div>
+                                <div class="right">
+                                    <span class="ttype">{{ttype[list.bill_type]}}</span>
+                                </div>
+                            </div>
+                            <div class="descWarp">
+                                <div class="left">
+                                    <span class="holiday">加添情况:{{holiday[list.holiday]}}</span>
+                                </div>
+                                <div class="right">
+                                    <span class="tdate"><i class="iconfont icon-clock1"></i> {{list.create_time|datetime 'YYYY/MM/DD'}}</span>
+                                </div>
+                            </div>
+                            <div class="descWarp">
+                                <div class="left">
+                                    <span>交易对手:{{list.target_name}}</span>
+                                </div>
+                            </div>
+                            <div class="descWarp">
+                                <div class="left">
+                                    <span>交易对手银行:{{list.target_bank}}</span>
+                                </div>
+
+                            </div>
+                            <div class="descWarp">
+                                <div class="scrollWarp">
+
+                                    {{list.note}}
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                </div>
+                <div  class="tab" :class="[tabKey=='salebill'?'active':'']">
+                    <li v-for="list in lists.salebill.lists"  v-touch:tap="touch($event,list)" class="item-content item-link">
+                        <div class="leftWarp">
+                            <div class="imgWarp">
+                                <div class="btype">{{btype[list.bill_type]}}</div>
+                                <div class="rate">{{list.interest_rate|percentFormat}}</div>
+                                <div class="fdate"><i class="iconfont icon-clock"></i>  {{list.future_date|datetime 'YYYY/MM/DD'}}</div>
+                            </div>
+                        </div>
+                        <div class="rightWarp">
+                            <div class="descWarp">
+                                <div class="left">
+                                    <span class="sum">{{list.total_sum|moneyFormat}}万</span>/<span class="IDbnum">{{list.total_bill_num}}张</span>
+                                </div>
+                                <div class="right">
+                                    <span class="ttype">{{ttype[list.bill_type]}}</span>
+                                </div>
+                            </div>
+                            <div class="descWarp">
+                                <div class="left">
+                                    <span class="holiday">加添情况:{{holiday[list.holiday]}}</span>
+                                </div>
+                                <div class="right">
+                                    <span class="tdate"><i class="iconfont icon-clock1"></i> {{list.create_time|datetime 'YYYY/MM/DD'}}</span>
+                                </div>
+                            </div>
+                            <div class="descWarp">
+                                <div class="left">
+                                    <span>交易对手:{{list.target_name}}</span>
+                                </div>
+                            </div>
+                            <div class="descWarp">
+                                <div class="left">
+                                    <span>交易对手银行:{{list.target_bank}}</span>
+                                </div>
+
+                            </div>
+                            <div class="descWarp">
+                                <div class="scrollWarp">
+
+                                    {{list.note}}
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                </div>
+                <div  class="tab" :class="[tabKey=='waitbill'?'active':'']">
+                    <div class="waitbill">
+
+                    <div class="leftContent">
+                        <li v-for="list in lists.waitbill.lists"  v-touch:tap="touch($event,list)" class="item-content item-link">
+                            <div class="waitItem">
+                            <div class="itemOne">
+                                <div class="left email">{{list.title}}</div>
+                                <div class="right btime">{{list.create_time | datetime 'YYYY/MM/DD'}}</div>
+                            </div>
+                            <div class="itemOne">
+                                <div class="left price">
+                                    金额:{{list.total_sum|moneyFormat}}/{{list.total_bill_num}}张
+                                </div>
+                                <div class="right btype">{{btype[list.bill_type]}}</div>
+
+                            </div>
+                            <div class="etitle">
+                                {{list.title}}
+                            </div>
+                            <div class="note">
+                                {{list.note}}
+                            </div>
+                        </div>
+                        </li>
+                    </div>
+
+                    <!--<div class="rightContent">
+                        <div class="index" v-for="n in 12">{{n+1}}月</div>
+                    </div>-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

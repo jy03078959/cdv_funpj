@@ -1,0 +1,10 @@
+<div id="alert" :class="[show ? '' : 'hide']">
+    <div class="alert_warp">
+        <div class="top">{{title}}</div>
+        <div class="center">{{{text}}}</div>
+        <div class="footer">
+            <div class="button cancle" v-show="showCancle" v-touch:tap="cancle">取消</div>
+            <div class="button" v-touch:tap="ok">确定</div>
+        </div>
+    </div>
+</div>

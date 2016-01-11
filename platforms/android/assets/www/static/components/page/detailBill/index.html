@@ -1,0 +1,138 @@
+<div id="detailBill" class="content">
+    <div class="pageContent">
+        <div class="totalInfo">
+           <div class="gardLeft">
+
+               <div v-for="item in billInfo.info.extra.bankInfo" class="item">
+                   {{$key|bankFormat}}:{{item.sum}} <span>{{item.num}}张</span>
+               </div>
+
+               <div class="item price">
+                   100000 <span>4张</span>
+               </div>
+           </div>
+            <div class="grad-line"></div>
+           <div class="gardRight">
+               <div class="item">
+                   实付:{{billInfo.info.total_paid}}
+               </div>
+               <div class="item">
+                   利息:{{billInfo.info.total_interest}}
+               </div>
+               <div class="item">
+                   票据类型:{{billInfo.info.bill_type|billFormat}}
+               </div>
+           </div>
+        </div>
+        <div class="list-block">
+            <ul>
+                <li>
+                    <div class="item-content item-link">
+                        <div class="item-inner">
+                            <div class="item-title label">交易日期:</div>
+                            <div class="item-input">
+                                <input  type="text" v-model="billInfo.info.transaction_date|datetime"  v-date-time-select="billInfo.info.transaction_date" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content item-link">
+                        <div class="item-inner">
+                            <div class="item-title label">交易类型:</div>
+                            <div class="item-input">
+                                <c-select :params.sync="billInfo.info.transaction_type" :lists="Config.metaData.ttype"></c-select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content item-link">
+                        <div class="item-inner">
+                            <div class="item-title label">加天情况:</div>
+                            <div class="item-input">
+                                <c-select :params.sync="billInfo.info.holiday" :lists="Config.metaData.holiday"></c-select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content item-link">
+                        <div class="item-inner">
+                            <div class="item-title label">交易对手:</div>
+                            <div class="item-input">
+                                <input v-model="billInfo.info.target_name" type="text" placeholder="输入交易对手">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content item-link">
+                        <div class="item-inner">
+                            <div class="item-title label">利率:</div>
+                            <div class="item-input">
+                                <input type="text" v-model="billInfo.info.interest_rate" placeholder="输入利率">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content item-link">
+                        <div class="item-inner">
+                            <div class="item-title label">远期日期:</div>
+                            <div class="item-input">
+                                <input type="text" v-model="billInfo.info.future_date|datetime" v-date-time-select="billInfo.info.future_date" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-inner item-block">
+                            <div class="item-title label">备注:</div>
+                            <div class="item-input">
+                                <textarea v-model="billInfo.info.note" placeholder="输入备注信息"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <div class="h1">票据清单</div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>票号</th>
+                    <th>出票日</th>
+                    <th>出票人</th>
+                    <th>收款人</th>
+                    <th>节假日</th>
+                    <th>金额</th>
+                    <th>到期日</th>
+                    <th>承兑人</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="item in billInfo.lists">
+                    <td>{{$index}}</td>
+                    <td>{{item.bill_number}}</td>
+                    <td>{{item.begin_date|datetime}}</td>
+                    <td>{{item.launch_company}}</td>
+                    <td>{{item.accept_company}}</td>
+                    <td>缺少字段</td>
+                    <td>{{item.sum}}</td>
+                    <td>{{item.end_date|datetime}}</td>
+                    <td>{{item.accept_bank}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div class="bottomWarp">
+        <div class="btn blue" v-touch:tap="createBill">生成清单</div>
+    </div>
+</div>

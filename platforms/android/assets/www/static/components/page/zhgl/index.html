@@ -1,0 +1,88 @@
+<div id="zhgl" class="hzgl page">
+    <div class="search-panel">
+        <h1>账号搜索</h1>
+
+        <div class="search-warp">
+              <span class="form-group">
+                <label>
+                    姓名:
+                </label>
+               <input type="text" lazy v-model="searchInfo.name"
+                      class="form-control">
+            </span>
+             <span class="form-group">
+                <label>
+                    性别:
+                </label>
+                <select v-model="searchInfo.gender">
+                    <option value="">全部</option>
+                    <option value="1">男</option>
+                    <option value="0">女</option>
+                </select>
+            </span>
+            <span class="form-group">
+                <label>
+                    手机:
+                </label>
+               <input type="text" lazy v-model="searchInfo.mobile"
+                      class="form-control">
+            </span>
+             <span class="form-group">
+                <label>
+                    状态:
+                </label>
+                <select v-model="searchInfo.status">
+                    <option value="">全部</option>
+                    <option value="1">启用</option>
+                    <option value="0">禁用</option>
+                </select>
+            </span>
+
+            <div class="btn yellow search" v-touch:tap="search">
+                查询
+            </div>
+        </div>
+    </div>
+    <div class="nav-panel clearfix">
+        <div class="btn green addBtn" v-touch:tap="add">
+            新增
+        </div>
+    </div>
+    <div class="list-panel">
+        <div class="table">
+            <div class="thead">
+                <ttd >序号</ttd>
+                <ttd >手机号</ttd>
+                <ttd >姓名</ttd>
+                <ttd >性别</ttd>
+                <ttd >创建时间</ttd>
+                <ttd >操作</ttd>
+            </div>
+            <div class="tbody">
+                <div v-repeat="item in ggInfo.lists" v-touch:tap="info($event,item)">
+                    <ttd>{{$index}}</ttd>
+                    <ttd>{{item.mobile}}</ttd>
+                    <ttd>{{item.name}}</ttd>
+                    <ttd>{{item.gender | sex}}</ttd>
+                    <ttd>{{item.createTime | datetime}}</ttd>
+                    <ttd>
+                        <div class="btn2 {{item.status==1?'red':''}}" v-touch:tap="statusChange($event,item)">{{item.status==1?'禁用':'启用'}}</div>
+                    </ttd>
+
+                </div>
+                <div>
+                    <ttd ></ttd>
+                    <ttd ></ttd>
+                    <ttd ></ttd>
+                    <ttd ></ttd>
+                    <ttd ></ttd>
+                    <ttd ></ttd>
+                </div>
+
+            </div>
+        </div>
+        <div class="dataPageWarp">
+            <c-datapager params="{{ggInfo.pagerInfo}}"></c-datapager>
+        </div>
+    </div>
+</div>

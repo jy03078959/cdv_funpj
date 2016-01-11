@@ -1,0 +1,1 @@
+define("components/page/init/index",function(n,e,i){var s=n("vue.js"),t=n("components/common/BasePage.js");i.exports=s.extend({mixins:[t],className:"init",template:'<div id="init" class="page">\n    <div class="pageContent">\n        内容\n    </div>\n</div>\n'})});

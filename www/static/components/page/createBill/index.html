@@ -1,0 +1,80 @@
+<div id="createBill" class="content">
+    <div class="pageContent">
+        <div class="list-block">
+            <ul>
+                <li>
+                    <div class="item-content item-link">
+                        <div class="item-inner">
+                            <div class="item-title label">拟交易模式:</div>
+                            <div class="item-input">
+                                <c-select :params.sync="1" :lists="Config.metaData.ttype"></c-select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content item-inner noPadding-right">
+                        <div>
+
+                        票面到期日
+                        </div>
+
+                        <div class="">
+                            <div class="item-link">
+                                <div class="item-inner">
+                                    <div class="item-title label">晚于:</div>
+                                    <div class="item-input">
+                                        <input type="text" placeholder="2015-12-12">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-link">
+
+                            <div class="item-inner noAfter">
+                                <div class="item-title label">早于:</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="">
+                                </div>
+                            </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content item-link">
+                        <div class="item-inner">
+                            <div class="item-title label">票据类型:</div>
+                            <div class="item-input">
+                                <c-select :params.sync="1" :lists="Config.metaData.btype"></c-select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content item-link">
+                        <div class="item-inner">
+                            <div class="item-title label">总金额:</div>
+                            <div class="item-input">
+                                <input type="text" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="name">国股</div>
+                            <c-numselect></c-numselect>
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="bottomWarp">
+        <div class="btn blue" v-touch:tap="createBill">生成清单</div>
+    </div>
+</div>

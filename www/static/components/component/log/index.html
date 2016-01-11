@@ -1,0 +1,11 @@
+<div id="log">
+    <div v-show="showLog" class="itemWarp">
+        <div class="item" v-touch:tap="clearAll">
+            清除所有
+        </div>
+        <div class="item" v-repeat="log in logs">
+            {{log.content}}
+        </div>
+    </div>
+    <div class="hander" v-touch:tap="toggle"></div>
+</div>

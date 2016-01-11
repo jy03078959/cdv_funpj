@@ -1,0 +1,32 @@
+<div id="login" class="content">
+    <div class="pageContent">
+        <div class="list-block">
+            <ul>
+                <li>
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title label">用户名:</div>
+                            <div class="item-input">
+                                <input type="text" v-model="info.username" placeholder="xx@funpj.com">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title label">密码:</div>
+                            <div class="item-input">
+                                <input type="password" v-model="info.password" placeholder="输入密码">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <div class="btnWarp">
+            <div class="btn blue" v-touch:tap="submit">确定</div>
+        </div>
+    </div>
+</div>
